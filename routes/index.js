@@ -3,10 +3,11 @@ const router = express.Router()
 const home = require('./modules/home')
 const user = require('./modules/user')
 const todo = require('./modules/todo')
+const { authenticator }= require('../middleware/auth')
 
-router.use('/todos', todo)
+router.use('/todos', authenticator, todo)
 router.use('/users', user)
-router.use('/', home)
+router.use('/', authenticator,home)
 
 
 
