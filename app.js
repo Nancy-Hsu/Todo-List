@@ -3,7 +3,7 @@ const exphbs = require('express-handlebars')
 const session = require('express-session')
 const usePassport = require('./config/passport')
 const methodOverride = require('method-override')
-const bcrypt = require('bcryptjs')
+// const flash = require('connect-flash')
 
 const router = require('./routes/index')
 const app = express()
@@ -20,6 +20,12 @@ app.use(session({
   saveUninitialized: true
 }))
 usePassport(app)
+// app.use(flash())
+app.use((req, res, next) => {
+  res.locals.isAuthenticated = req.isAuthenticated()
+  res.locals.user = req.user
+  next()
+})
 
 app.use(router)
 
