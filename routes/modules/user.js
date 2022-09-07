@@ -19,8 +19,26 @@ router.get('/register', (req, res) => {
 
 router.post('/register', (req, res) => {
   const { name, email, password, confirmPassword } = req.body
-  User.create({ name, email, password })
-    .then(user => res.redirect('/'))
+  User.findOne({ where: { email } })
+    .then(user => {
+      if (user) {
+        console.log('User already exists')
+        return res.render('register', {
+          name,
+          email,
+          password,
+          confirmPassword
+        })
+      }
+
+      return User.create({
+        name,
+        email,
+        password: bcrypt.hashSync(password, bcrypt.genSaltSync(10), null)
+      })
+        .then(() => res.redirect('/'))
+        .catch(err => console.log(err))
+    })
 })
 
 router.get('/logout', (req, res) => {
