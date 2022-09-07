@@ -1,10 +1,11 @@
 const express = require('express')
 const exphbs = require('express-handlebars')
 const session = require('express-session')
-const router = require('./routes/index')
+const usePassport = require('./config/passport')
 const methodOverride = require('method-override')
 const bcrypt = require('bcryptjs')
 
+const router = require('./routes/index')
 const app = express()
 const PORT = 3000
 
@@ -18,6 +19,7 @@ app.use(session({
   resave: false,
   saveUninitialized: true
 }))
+usePassport(app)
 
 app.use(router)
 

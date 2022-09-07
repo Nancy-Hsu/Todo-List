@@ -5,7 +5,7 @@ const user = require('./modules/user')
 const todo = require('./modules/todo')
 
 router.use('/todos', todo)
-router.use('/user', user)
+router.use('/users', user)
 router.use('/', home)
 
 
