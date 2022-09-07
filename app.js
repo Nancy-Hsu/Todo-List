@@ -1,5 +1,6 @@
 const express = require('express')
 const exphbs = require('express-handlebars')
+
 const router = require('./routes/index')
 const methodOverride = require('method-override')
 const bcrypt = require('bcryptjs')
