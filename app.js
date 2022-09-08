@@ -4,6 +4,7 @@ const session = require('express-session')
 const usePassport = require('./config/passport')
 const methodOverride = require('method-override')
 const flash = require('connect-flash')
+require('dotenv').config()
 
 const router = require('./routes/index')
 const app = express()
@@ -15,7 +16,7 @@ app.use(express.urlencoded({ extended: true }))
 app.use(methodOverride('_method'))
 
 app.use(session({
-  secret: 'ThisIsMySecret',
+  secret: process.env.SESSION_SECRECT,
   resave: false,
   saveUninitialized: true
 }))
