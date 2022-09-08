@@ -1,5 +1,9 @@
 # Todo-List
-歡迎使用 試用帳號 email: 'root@example.com', password: '12345678'.
+歡迎使用 試用帳號 </br>
+email: root@example.com </br>
+password: 12345678
+</br>
+</br>
 ![image](https://user-images.githubusercontent.com/108853120/189066479-e0909109-47f0-4f9d-8a94-d304d8a205d2.png)
 ## 功能
 - 可以註冊成會員，管理自己的 todo-list
